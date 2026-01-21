@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --padding: 5rem 0;
+  --inner-width: 68rem;
+  --inner-padding: 1rem;
+}
+
+section {
+  .background {
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .overlay {
+      padding: var(--padding);
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      .inner {
+        width: 100%;
+        max-width: var(--inner-width);
+        padding: var(--inner-padding);
+      }
+    }
+  }
+}

@@ -29,6 +29,13 @@ export namespace Components {
         "right": boolean;
         "setDirection": (right: boolean) => Promise<void>;
     }
+    interface SevoSection {
+        "backgroundColor": string;
+        "backgroundFixed": boolean;
+        "imgSrc": string;
+        "minHeight": string;
+        "overlayColor": string;
+    }
 }
 export interface SevoOffcanvasCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -59,9 +66,16 @@ declare global {
         prototype: HTMLSevoOffcanvasElement;
         new (): HTMLSevoOffcanvasElement;
     };
+    interface HTMLSevoSectionElement extends Components.SevoSection, HTMLStencilElement {
+    }
+    var HTMLSevoSectionElement: {
+        prototype: HTMLSevoSectionElement;
+        new (): HTMLSevoSectionElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "sevo-offcanvas": HTMLSevoOffcanvasElement;
+        "sevo-section": HTMLSevoSectionElement;
     }
 }
 declare namespace LocalJSX {
@@ -87,9 +101,17 @@ declare namespace LocalJSX {
         "opened"?: boolean;
         "right"?: boolean;
     }
+    interface SevoSection {
+        "backgroundColor"?: string;
+        "backgroundFixed"?: boolean;
+        "imgSrc"?: string;
+        "minHeight"?: string;
+        "overlayColor"?: string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "sevo-offcanvas": SevoOffcanvas;
+        "sevo-section": SevoSection;
     }
 }
 export { LocalJSX as JSX };
@@ -98,6 +120,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "sevo-offcanvas": LocalJSX.SevoOffcanvas & JSXBase.HTMLAttributes<HTMLSevoOffcanvasElement>;
+            "sevo-section": LocalJSX.SevoSection & JSXBase.HTMLAttributes<HTMLSevoSectionElement>;
         }
     }
 }
