@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --gap: 1.5rem;
+  --justify-content: flex-start;
+  --align-items: flex-start;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: var(--justify-content);
+  align-items: var(--align-items);
+  gap: var(--gap);
+}
+
+.col {
+  flex: 1 1 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

@@ -4,7 +4,7 @@
 
 :host {
   --padding: 5rem 0;
-  --inner-width: 68rem;
+  --inner-max-width: 68rem;
   --inner-padding: 1rem;
 }
 
@@ -20,7 +20,7 @@ section {
       height: 100%;
       .inner {
         width: 100%;
-        max-width: var(--inner-width);
+        max-width: var(--inner-max-width);
         padding: var(--inner-padding);
       }
     }

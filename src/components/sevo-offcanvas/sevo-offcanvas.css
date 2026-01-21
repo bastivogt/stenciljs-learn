@@ -8,7 +8,7 @@
   --backdrop-z-index: 8887;
   --transition-time: 0.3s;
   --transition-easing: ease;
-  --backdrop-background-color: rgba(0, 0, 0, 0.2);
+  --backdrop-background-color: rgba(0, 0, 0, 0.5);
   --width: 30rem;
   --padding: 20px;
 }
@@ -59,4 +59,10 @@
 
 :host([opened]) #backdrop {
   display: block;
+}
+
+@media only screen and (max-width: 35rem) {
+  #offcanvas {
+    width: 15rem;
+  }
 }

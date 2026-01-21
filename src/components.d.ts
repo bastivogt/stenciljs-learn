@@ -20,6 +20,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SevoFourCol {
+    }
     interface SevoOffcanvas {
         "canvasClick": boolean;
         "close": () => Promise<void>;
@@ -36,6 +38,10 @@ export namespace Components {
         "minHeight": string;
         "overlayColor": string;
     }
+    interface SevoThreeCol {
+    }
+    interface SevoTwoCol {
+    }
 }
 export interface SevoOffcanvasCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -47,6 +53,12 @@ declare global {
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
+    };
+    interface HTMLSevoFourColElement extends Components.SevoFourCol, HTMLStencilElement {
+    }
+    var HTMLSevoFourColElement: {
+        prototype: HTMLSevoFourColElement;
+        new (): HTMLSevoFourColElement;
     };
     interface HTMLSevoOffcanvasElementEventMap {
         "offcanvasOpened": EventDetail;
@@ -72,10 +84,25 @@ declare global {
         prototype: HTMLSevoSectionElement;
         new (): HTMLSevoSectionElement;
     };
+    interface HTMLSevoThreeColElement extends Components.SevoThreeCol, HTMLStencilElement {
+    }
+    var HTMLSevoThreeColElement: {
+        prototype: HTMLSevoThreeColElement;
+        new (): HTMLSevoThreeColElement;
+    };
+    interface HTMLSevoTwoColElement extends Components.SevoTwoCol, HTMLStencilElement {
+    }
+    var HTMLSevoTwoColElement: {
+        prototype: HTMLSevoTwoColElement;
+        new (): HTMLSevoTwoColElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "sevo-four-col": HTMLSevoFourColElement;
         "sevo-offcanvas": HTMLSevoOffcanvasElement;
         "sevo-section": HTMLSevoSectionElement;
+        "sevo-three-col": HTMLSevoThreeColElement;
+        "sevo-two-col": HTMLSevoTwoColElement;
     }
 }
 declare namespace LocalJSX {
@@ -93,6 +120,8 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SevoFourCol {
+    }
     interface SevoOffcanvas {
         "canvasClick"?: boolean;
         "left"?: boolean;
@@ -108,10 +137,17 @@ declare namespace LocalJSX {
         "minHeight"?: string;
         "overlayColor"?: string;
     }
+    interface SevoThreeCol {
+    }
+    interface SevoTwoCol {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "sevo-four-col": SevoFourCol;
         "sevo-offcanvas": SevoOffcanvas;
         "sevo-section": SevoSection;
+        "sevo-three-col": SevoThreeCol;
+        "sevo-two-col": SevoTwoCol;
     }
 }
 export { LocalJSX as JSX };
@@ -119,8 +155,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "sevo-four-col": LocalJSX.SevoFourCol & JSXBase.HTMLAttributes<HTMLSevoFourColElement>;
             "sevo-offcanvas": LocalJSX.SevoOffcanvas & JSXBase.HTMLAttributes<HTMLSevoOffcanvasElement>;
             "sevo-section": LocalJSX.SevoSection & JSXBase.HTMLAttributes<HTMLSevoSectionElement>;
+            "sevo-three-col": LocalJSX.SevoThreeCol & JSXBase.HTMLAttributes<HTMLSevoThreeColElement>;
+            "sevo-two-col": LocalJSX.SevoTwoCol & JSXBase.HTMLAttributes<HTMLSevoTwoColElement>;
         }
     }
 }
