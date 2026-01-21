@@ -20,6 +20,19 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SevoOffcanvas {
+        "canvasClick": boolean;
+        "close": () => Promise<void>;
+        "left": boolean;
+        "open": () => Promise<void>;
+        "opened": boolean;
+        "right": boolean;
+        "setDirection": (right: boolean) => Promise<void>;
+    }
+}
+export interface SevoOffcanvasCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSevoOffcanvasElement;
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +41,27 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSevoOffcanvasElementEventMap {
+        "offcanvasOpened": EventDetail;
+        "offcanvasClosed": EventDetail;
+    }
+    interface HTMLSevoOffcanvasElement extends Components.SevoOffcanvas, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSevoOffcanvasElementEventMap>(type: K, listener: (this: HTMLSevoOffcanvasElement, ev: SevoOffcanvasCustomEvent<HTMLSevoOffcanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSevoOffcanvasElementEventMap>(type: K, listener: (this: HTMLSevoOffcanvasElement, ev: SevoOffcanvasCustomEvent<HTMLSevoOffcanvasElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSevoOffcanvasElement: {
+        prototype: HTMLSevoOffcanvasElement;
+        new (): HTMLSevoOffcanvasElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "sevo-offcanvas": HTMLSevoOffcanvasElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +79,17 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SevoOffcanvas {
+        "canvasClick"?: boolean;
+        "left"?: boolean;
+        "onOffcanvasClosed"?: (event: SevoOffcanvasCustomEvent<EventDetail>) => void;
+        "onOffcanvasOpened"?: (event: SevoOffcanvasCustomEvent<EventDetail>) => void;
+        "opened"?: boolean;
+        "right"?: boolean;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "sevo-offcanvas": SevoOffcanvas;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +97,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "sevo-offcanvas": LocalJSX.SevoOffcanvas & JSXBase.HTMLAttributes<HTMLSevoOffcanvasElement>;
         }
     }
 }

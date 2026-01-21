@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <link rel="stylesheet" href="style.css" />
+
     <title>Stencil Component Starter</title>
 
     <script type="module" src="/build/learn.esm.js"></script>
@@ -10,5 +12,62 @@
   </head>
   <body>
     <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+    <button id="menu-btn">Menu</button>
+    <h1>Headline</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam illo iusto ipsa voluptates ullam culpa tenetur a provident excepturi omnis asperiores nisi deserunt nostrum
+      perferendis iste vitae quae numquam enim officiis, at distinctio dolorem! Cum, eligendi, quos dolorum sed eius dolorem consequatur nobis aspernatur asperiores ipsum commodi
+      distinctio voluptatum nisi! Iure dolores dignissimos laborum voluptate illo deleniti distinctio odit qui maiores est laboriosam, reiciendis nemo mollitia beatae expedita
+      quasi ducimus asperiores ea! Vero totam dignissimos culpa et voluptatibus. Ratione incidunt eum quaerat veniam nulla architecto iure sint aliquam qui a numquam perspiciatis,
+      veritatis id velit? Veritatis, exercitationem culpa. Magni nobis delectus ducimus inventore laboriosam vitae obcaecati quisquam perspiciatis cum itaque exercitationem
+      laborum, nulla laudantium similique saepe pariatur voluptatibus iusto. Expedita molestias dicta reprehenderit minus, deleniti sint pariatur officiis suscipit, nemo debitis,
+      esse quas voluptas. Quaerat quod eius laborum magnam ad et, accusantium officiis. Culpa, eum eligendi ducimus doloribus praesentium deleniti facilis, dicta consectetur
+      pariatur sunt officia non ipsam quisquam assumenda officiis omnis quibusdam qui nihil dolorum iure fugit. Nemo accusamus similique omnis ipsam aut odit ducimus. Ipsum
+      repellendus neque fuga esse, possimus cum iure fugit magni, velit voluptas dolores asperiores modi unde commodi. Deserunt quas temporibus ut nemo non, voluptatum
+      voluptatibus! Modi ipsam odio aliquam nesciunt, asperiores sapiente officia a esse harum alias repudiandae tempora tenetur nobis praesentium porro aperiam ratione nostrum,
+      accusamus vitae eligendi quam ad. Officiis esse error nemo eius ullam officia? Voluptatum aliquam amet consequatur pariatur ea enim consectetur quo et debitis, illum nihil
+      suscipit inventore. Sapiente commodi alias mollitia quam repellat ipsum iure deleniti aliquam. Vitae placeat ad asperiores iste, aliquid ipsa accusantium quidem cumque, quo
+      dolorem eligendi delectus exercitationem officiis dolor, laboriosam tempora magni officia id cum minus natus. Expedita consequuntur, molestiae natus quae assumenda distinctio
+      sequi quidem accusantium molestias libero. Necessitatibus autem saepe, fugit voluptate iure blanditiis voluptatem adipisci voluptas laboriosam, in porro illum dignissimos,
+      possimus aut ratione error veniam eaque! Necessitatibus excepturi quaerat ipsum? Explicabo quae sed animi libero recusandae laboriosam perspiciatis impedit incidunt
+      consectetur aut inventore, expedita quam eveniet accusantium dolorum tenetur quod labore, esse iste qui beatae. Expedita debitis, quas, aliquid sit nisi illum vel beatae esse
+      adipisci cum explicabo. Sint, nisi veniam tempore inventore quidem debitis adipisci harum numquam maiores perferendis ullam iusto dicta tenetur itaque, quae sunt illum sit
+      exercitationem at voluptatum, omnis vero? Magnam facilis labore cumque enim ipsum nulla saepe et vel maiores? Nesciunt vitae perferendis doloribus!
+    </p>
+    <sevo-offcanvas right canvas-click>
+      <h1>Navigation</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </sevo-offcanvas>
+
+    <script>
+      /*       window.addEventListener('load', () => {
+        document.body.classList.add('fade-in');
+      }); */
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('fade-in');
+      });
+
+      const menuBtn = document.querySelector('#menu-btn');
+      const offcanvas = document.querySelector('sevo-offcanvas');
+
+      offcanvas.addEventListener('offcanvasOpened', e => {
+        console.log('OPEN', e.detail);
+      });
+
+      offcanvas.addEventListener('offcanvasClosed', e => {
+        console.log('CLOSED', e.detail);
+      });
+
+      menuBtn.addEventListener('click', e => {
+        offcanvas.open();
+      });
+    </script>
   </body>
 </html>

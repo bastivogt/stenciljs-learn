@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --background-color: rgb(33, 33, 33);
+  --offcanvas-z-index: 8888;
+  --backdrop-z-index: 8887;
+  --transition-time: 0.3s;
+  --transition-easing: ease;
+  --backdrop-background-color: rgba(0, 0, 0, 0.2);
+  --width: 30rem;
+  --padding: 20px;
+}
+
+#offcanvas {
+  position: fixed;
+  top: 0;
+  /* left: 0; */
+  bottom: 0;
+  width: var(--width);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: var(--offcanvas-z-index);
+  background-color: var(--background-color);
+  padding: var(--padding);
+  transition: all var(--transition-time) var(--transition-easing);
+  /* transform: translate(-100%, 0); */
+}
+
+:host([left]) #offcanvas {
+  left: 0;
+  transform: translate(-100%, 0);
+}
+
+:host([opened][left]) #offcanvas {
+  transform: translate(0, 0);
+}
+
+:host([right]) #offcanvas {
+  right: 0;
+  transform: translate(var(--width), 0);
+}
+
+:host([opened][right]) #offcanvas {
+  transform: translate(0, 0);
+}
+
+#backdrop {
+  background-color: var(--backdrop-background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--backdrop-z-index);
+  transition: all var(--transition-time) var(--transition-easing);
+  display: none;
+}
+
+:host([opened]) #backdrop {
+  display: block;
+}
